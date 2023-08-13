@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar"data-offset="50">
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand m-lg-2" href="/">University Website</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li th:if="${isAuth} == false" class="nav-item">
+                    <a  class="nav-link" href="/login" style="border: 2px solid #0a58ca; background-color: #b6effb;font-size: 20px">
+                        LOGIN
+                    </a>
+                </li>
+
+                <li th:if="${isAuth} == true" class="nav-item">
+                    <a class="nav-link" href="/logout" style="border: 2px solid #6a1a21; background-color: #f5c2c7;font-size: 20px">
+                        LOGOUT
+                    </a>
+
+                </li>
+                <li th:if="${isAuth} == true" class="nav-item">
+                <h5 class="card-title" style="margin-left: 10px"  th:text="'Welcome '+${name}"></h5>
+                </li>
+                <li class="nav-item" th:if="${role} =='ADMIN' ">
+                    <a  class="nav-link" href="/admin/addStudent">
+                        Add Student
+                    </a>
+                </li>
+                <li class="nav-item" th:if="${role} =='ADMIN' ">
+                    <a  class="nav-link" href="/admin/addCourse" >
+                        Add Course
+                    </a>
+                </li>
+                <li class="nav-item" th:if="${role} =='ADMIN' ">
+                    <a  class="nav-link" href="/admin/addProfessor">
+                        Add Professor
+                    </a>
+                </li>
+                <li class="nav-item" th:if="${role} =='STUDENT' ">
+                    <a  class="nav-link" href="/student/courseAssignment">
+                        Course Assignment
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+
+
+</body>
+</html>

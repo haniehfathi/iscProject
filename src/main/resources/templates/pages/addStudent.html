@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+    <style>
+        .validation {
+            margin-top: 10px;
+            color: #e8200e;
+            font-size: 16px;
+        }
+
+        .validation:before {
+            content: '*';
+            margin-right: 3px;
+        }
+    </style>
+</head>
+<body>
+<div style="margin-top: 60px;" th:replace="pages/layout::header"></div>
+<div class="section-center">
+    <div class="container" style="padding-top: 50px;padding-bottom: 50px;max-width: 1700px;">
+        <div class="booking-form">
+            <form th:action="@{/admin/addStudent}" method="post"  th:object="${student}" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Name: </span>
+                            <input class="form-control" type="text" th:field="*{name}">
+                            <div class="validation" th:if="${#fields.hasErrors('name')}"
+                                 th:errors="*{name}"></div>
+                        </div>
+                    </div>
+                             <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Family: </span>
+                            <input class="form-control" type="text" th:field="*{family}">
+                            <div class="validation" th:if="${#fields.hasErrors('family')}"
+                                 th:errors="*{family}"></div>
+                        </div>
+                    </div>
+                             <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Email: </span>
+                            <input class="form-control" type="text" th:field="*{email}">
+                            <div class="validation" th:if="${#fields.hasErrors('email')}"
+                                 th:errors="*{email}"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Address: </span>
+                            <input class="form-control" type="text" th:field="*{address}">
+                            <div class="validation" th:if="${#fields.hasErrors('address')}"
+                                 th:errors="*{address}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Phone Number: </span>
+                            <input class="form-control" type="text" th:field="*{phoneNumber}">
+                            <div class="validation" th:if="${#fields.hasErrors('phoneNumber')}"
+                                 th:errors="*{phoneNumber}"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">National Code: </span>
+                            <input class="form-control" type="text" th:field="*{nationalCode}">
+                            <div class="validation" th:if="${#fields.hasErrors('nationalCode')}"
+                                 th:errors="*{nationalCode}"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <span class="form-label">Username: </span>
+                            <input class="form-control" type="text" th:field="*{username}">
+                            <div class="validation" th:if="${#fields.hasErrors('username')}"
+                                 th:errors="*{username}"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 " dir="ltr">
+                        <button dir="ltr" class=" form-group btn-submit m-b-0 btn btn-info" style="font-size: 22px;background-color: #4272d7;color: white;margin-top: 40px;margin-left:50px;width: 150px"
+                                type="submit">Save
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<br/>
+
+<div id="wrapper" class="container-fluid">
+    <div id="second" dir="rtl" style="margin: auto">
+        <div class="container-fluid" style="margin-bottom: 300px;" dir="rtl" id="allCat">
+            <div style="overflow-x: scroll ;margin-bottom: 50px">
+                <form id="search-form" th:action="@{/admin/addStudent}" method="get">
+                    <table class="table">
+                        <thead class="thead-light ">
+
+                        <tr>
+                            <!--                <th scope="col">شناسه</th>-->
+                            <th scope="col">name</th>
+                            <th scope="col">family</th>
+                            <th scope="col">email</th>
+                            <th scope="col">username</th>
+                            <th scope="col">nationalCode</th>
+                            <th scope="col">numberOfUnits</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="student : ${students}">
+
+
+                            <td>
+                                <a th:text="${student.name}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${student.family}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${student.email}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${student.username}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${student.nationalCode}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${student.numberOfUnits}" class="text-dark"> </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

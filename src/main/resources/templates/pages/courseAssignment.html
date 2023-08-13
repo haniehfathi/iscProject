@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+</head>
+<body>
+<div style="margin-top: 60px;" th:replace="pages/layout::header"></div>
+<div class="section-center">
+    <div class="container" style="padding-top: 50px;padding-bottom: 50px;max-width: 1700px;">
+        <div class="booking-form">
+            <form th:action="@{/student/courseAssignment}" method="post"  th:object="${student}" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="label mt-4 ml-1">Master Of Course: </label>
+                            <select  th:field="*{courses}"
+                                     class="form-control " id="coursesSelect" name="courses">
+                                <option th:each="course : ${courses}"
+                                        th:value="${course.id}"
+                                        th:text="${course.title}">
+            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 " dir="ltr">
+                        <button dir="ltr" class=" form-group btn-submit m-b-0 btn btn-info" style="font-size: 22px;background-color: #4272d7;color: white;margin-top: 40px;margin-left:50px;width: 150px"
+                                type="submit">Save
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<br/>
+
+<div id="wrapper" class="container-fluid">
+    <div id="second" dir="rtl" style="margin: auto">
+        <div class="container-fluid" style="margin-bottom: 300px;" dir="rtl" id="allCat">
+            <div style="overflow-x: scroll ;margin-bottom: 50px">
+                <form id="search-form" th:action="@{/student/courseAssignment}" method="get">
+                    <table class="table">
+                        <thead class="thead-light ">
+
+                        <tr>
+                            <!--                <th scope="col">شناسه</th>-->
+                            <th scope="col">title</th>
+                            <th scope="col">unit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="studentsCource : ${studentsCources}">
+
+
+                            <td>
+                                <a th:text="${studentsCource.title}" class="text-dark"> </a>
+                            </td>
+                            <td>
+                                <a th:text="${studentsCource.unit}" class="text-dark"> </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
