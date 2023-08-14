@@ -48,10 +48,7 @@ public class StudentService {
 
         if(studentIfExist !=null )
             throw new Exception("student Existed");
-        if(!std.getName().isEmpty() && !std.getFamily().isEmpty() && !std.getEmail().isEmpty() && !std.getNationalCode().isEmpty() && !std.getUsername().isEmpty())
-            return studentRepository.save(std);
-        else
-            return new Student();
+         return studentRepository.save(std);
     }
 
     public void courseAssignment(Course course){
