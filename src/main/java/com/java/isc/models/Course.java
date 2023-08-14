@@ -28,7 +28,8 @@ public class Course {
     private String title;
 
     @Column
-    @NotBlank(message = "واحد درس نباید خالی باشد")
+    @Min(value = 1)
+    @Max(value = 3)
     @NotNull
     private short unit;
 
