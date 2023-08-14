@@ -32,13 +32,10 @@ public class CourseService {
 
     public Course addCourse(Course course) throws Exception {
         Course courseIfExist=courseRepository.findByTitle(course.getTitle());
-
         if(courseIfExist !=null )
             throw new Exception("course Existed");
-        if(course.getTitle()!="" &&course.getUnit()!=0 &&course.getProfessor()!=null)
-            return courseRepository.save(course);
-        else
-            return null;
+    
+        return courseRepository.save(course);
     }
     public Course findOne(Long id) throws Exception {
         return Optional.ofNullable(courseRepository.findOne(id))
