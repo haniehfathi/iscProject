@@ -31,12 +31,7 @@ public class ProfessorService {
 
         if(professorIfExist !=null )
             throw new Exception("Professor Existed");
-
-        if(!professor.getName().isEmpty() && professor.getFamily().isEmpty() && !professor.getEmail().isEmpty())
-            return professorRepository.save(professor);
-        else
-            return null;
-
+        return professorRepository.save(professor);
     }
 
 
