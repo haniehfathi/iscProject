@@ -71,11 +71,12 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
-		How can I validate the string length using java spring ..
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
